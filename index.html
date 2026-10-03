@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Farming Information Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toast"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">🌾</div>
+      <div><strong>SmartFarm</strong><span>Information Portal</span></div>
+    </div>
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <nav id="nav">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#crops">Crops</a>
+      <a href="#weather">Weather</a>
+      <a href="#market">Market</a>
+      <a href="#schemes">Schemes</a>
+      <a href="#tips">Smart Tips</a>
+    </nav>
+    <button class="login-btn" id="loginOpen">Farmer Login</button>
+  </header>
+
+  <main>
+    <section class="hero" id="dashboard">
+      <div class="hero-copy">
+        <span class="eyebrow">🌱 DIGITAL FARMING ASSISTANT</span>
+        <h1>Grow smarter.<br><span>Farm better.</span></h1>
+        <p>One simple portal for crop information, weather updates, market prices, government schemes and practical farming tips.</p>
+        <div class="hero-actions">
+          <a class="primary" href="#crops">Explore Crops →</a>
+          <button class="secondary" id="registerOpen">Register as Farmer</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="sun">☀️</div>
+        <p>Today's farming outlook</p>
+        <h2>Good conditions</h2>
+        <div class="mini-stats">
+          <div><b>28°C</b><span>Temperature</span></div>
+          <div><b>68%</b><span>Humidity</span></div>
+          <div><b>12 km/h</b><span>Wind</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><b>120+</b><span>Crop guides</span></div>
+      <div><b>7 Days</b><span>Weather forecast</span></div>
+      <div><b>50+</b><span>Market locations</span></div>
+      <div><b>25+</b><span>Farmer schemes</span></div>
+    </section>
+
+    <section class="section" id="crops">
+      <div class="section-head">
+        <div><span class="eyebrow">CROP INFORMATION</span><h2>Choose your crop</h2></div>
+        <input id="cropSearch" class="search" placeholder="Search crop..." />
+      </div>
+      <div class="filter-row">
+        <button class="filter active" data-cat="All">All</button>
+        <button class="filter" data-cat="Cereals">Cereals</button>
+        <button class="filter" data-cat="Vegetables">Vegetables</button>
+        <button class="filter" data-cat="Fruits">Fruits</button>
+        <button class="filter" data-cat="Pulses">Pulses</button>
+        <button class="filter" data-cat="Cash Crops">Cash Crops</button>
+      </div>
+      <div class="card-grid" id="cropGrid"></div>
+    </section>
+
+    <section class="section split" id="weather">
+      <div class="panel weather-panel">
+        <span class="eyebrow">WEATHER</span>
+        <h2>Local weather</h2>
+        <p class="muted">Sample dashboard data — connect a weather API in the backend for live data.</p>
+        <div class="weather-main"><span>☀️</span><strong>28°C</strong><div><b>Partly cloudy</b><small>Rain chance 20%</small></div></div>
+        <div class="weather-grid">
+          <div>🌧️ <b>12 mm</b><small>Rainfall</small></div>
+          <div>💧 <b>68%</b><small>Humidity</small></div>
+          <div>💨 <b>12 km/h</b><small>Wind</small></div>
+          <div>🌡️ <b>32°C</b><small>Max temp.</small></div>
+        </div>
+      </div>
+      <div class="panel">
+        <span class="eyebrow">7-DAY FORECAST</span>
+        <h2>Plan your farm work</h2>
+        <div class="forecast" id="forecast"></div>
+      </div>
+    </section>
+
+    <section class="section" id="tips">
+      <div class="section-head"><div><span class="eyebrow">SMART FARMING</span><h2>Practical tips</h2></div></div>
+      <div class="tip-grid">
+        <article class="tip"><div>💧</div><h3>Irrigation</h3><p>Water according to soil moisture and crop growth stage. Prefer drip irrigation where suitable.</p></article>
+        <article class="tip"><div>🌱</div><h3>Soil management</h3><p>Test soil before fertilizer application and add organic matter to improve soil structure.</p></article>
+        <article class="tip"><div>🛡️</div><h3>Crop protection</h3><p>Inspect leaves and stems regularly so pests and diseases can be detected early.</p></article>
+        <article class="tip"><div>♻️</div><h3>Organic farming</h3><p>Use compost, crop rotation and biological methods as part of an integrated farm plan.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="market">
+      <div class="section-head"><div><span class="eyebrow">MARKET INFORMATION</span><h2>Today's sample prices</h2></div><select id="marketSelect"><option>All markets</option><option>Pune</option><option>Nashik</option><option>Nagpur</option></select></div>
+      <div class="table-wrap">
+        <table><thead><tr><th>Crop</th><th>Market</th><th>Min ₹/q</th><th>Max ₹/q</th><th>Average</th><th>Trend</th></tr></thead>
+        <tbody id="marketBody"></tbody></table>
+      </div>
+    </section>
+
+    <section class="section" id="schemes">
+      <div class="section-head"><div><span class="eyebrow">GOVERNMENT SUPPORT</span><h2>Farmer schemes</h2></div></div>
+      <div class="scheme-grid">
+        <article class="scheme"><span>💰</span><h3>PM-KISAN</h3><p>Explore eligibility, benefits and application information for eligible farmer families.</p><button onclick="showToast('Connect this card to the official scheme application page.')">View details</button></article>
+        <article class="scheme"><span>🛡️</span><h3>PM Fasal Bima Yojana</h3><p>Information about crop insurance, coverage and application process.</p><button onclick="showToast('Connect this card to the official scheme application page.')">View details</button></article>
+        <article class="scheme"><span>🧪</span><h3>Soil Health Card</h3><p>Understand soil testing, nutrient status and recommended inputs.</p><button onclick="showToast('Connect this card to the official scheme application page.')">View details</button></article>
+        <article class="scheme"><span>💦</span><h3>PM Krishi Sinchayee Yojana</h3><p>Learn about irrigation and water-use efficiency support.</p><button onclick="showToast('Connect this card to the official scheme application page.')">View details</button></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><span class="eyebrow">PEST & DISEASE</span><h2>Identify common problems</h2></div></div>
+      <div class="pest-grid">
+        <div class="pest">🐜 <b>Aphids</b><span>Leaf curling & sticky honeydew</span></div>
+        <div class="pest">🐛 <b>Stem borer</b><span>Dead hearts & stem damage</span></div>
+        <div class="pest">🪰 <b>Fruit fly</b><span>Fruit punctures & rotting</span></div>
+        <div class="pest">🍃 <b>Powdery mildew</b><span>White powder-like growth</span></div>
+        <div class="pest">🌿 <b>Late blight</b><span>Dark lesions on leaves</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand"><div class="brand-icon">🌾</div><div><strong>SmartFarm</strong><span>Information Portal</span></div></div>
+    <p>Built as a responsive starter project for a Smart Farming Information Portal.</p>
+  </footer>
+
+  <div class="modal" id="authModal">
+    <div class="modal-box">
+      <button class="close" id="closeModal">×</button>
+      <div class="tabs"><button class="tab active" data-mode="login">Login</button><button class="tab" data-mode="register">Register</button></div>
+      <div id="authContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
